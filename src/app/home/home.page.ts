@@ -8,15 +8,16 @@ import { doc, setDoc } from 'firebase/firestore';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  ledstate:any;
+  ledstate:boolean = false;
+  ruta:any
   constructor(private db:Firestore) {}
   async BotonEA() {
     this.ledstate = !this.ledstate;
-    this.ledstate = doc(this.db,'controlLED','LED1');
-    await setDoc(this.ledstate  , { encender: this.BotonEA });
+    this.ruta = doc(this.db,'controlLED','LED1');
+    await setDoc(this.ruta  , { encender: this.ledstate });
   }
-  async encender() {
-    this.ledstate = doc(this.db,'controlLED','LED1');
-    await setDoc(this.ledstate, { encender: true });
-}
+//   async encender() {
+//     this.ledstate = doc(this.db,'controlLED','LED1');
+//     await setDoc(this.ledstate, { encender: this.ledstate });
+// }
 }
